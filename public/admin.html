@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TaskSKA — Admin Portal</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/app.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230a2a66'/%3E%3Cpath d='M9 16l5 5 9-10' stroke='white' stroke-width='3' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+</head>
+<body>
+
+<div id="adminAuth" class="auth-wrap">
+  <div class="auth-hero" style="background:linear-gradient(150deg,#06183d,#0a2a66 60%,#0f3d8c)">
+    <div class="logo"><span class="dot">&#9881;</span> TaskSKA Admin</div>
+    <div>
+      <h1>Platform control center.</h1>
+      <p style="color:#dbe8fc;max-width:420px;font-size:15px">Manage users, roles and platform-wide
+      activity. This portal is restricted to the pre-built administrator account.</p>
+      <ul>
+        <li><span class="check">&#10003;</span><span>Platform-wide task &amp; user analytics</span></li>
+        <li><span class="check">&#10003;</span><span>Enable, disable, re-role or remove accounts</span></li>
+        <li><span class="check">&#10003;</span><span>Team workload oversight across the org</span></li>
+      </ul>
+    </div>
+    <div style="font-size:13px;color:#bcd2f5"><a href="/" style="color:#bcd2f5">&larr; Back to the main app</a></div>
+  </div>
+  <div class="auth-panel">
+    <div class="auth-card">
+      <h2>Administrator sign-in</h2>
+      <div class="sub">Restricted access &middot; admin credentials required</div>
+      <div id="adminAlert" class="alert info hidden"></div>
+      <div class="field"><label>Email</label><input id="a_email" type="email" placeholder="admin@taskska.app"></div>
+      <div class="field"><label>Password</label><input id="a_pass" type="password" placeholder="••••••••"></div>
+      <button class="btn block" onclick="Admin.login()">Sign in</button>
+      <div class="center-foot">Not an admin? <a href="/">Go to the main app &rarr;</a></div>
+    </div>
+  </div>
+</div>
+
+<div id="adminApp" class="app hidden">
+  <aside class="sidebar" style="background:#06183d">
+    <div class="brand"><span class="dot" style="background:var(--blue-700)">&#9881;</span> Admin</div>
+    <nav class="nav" id="adminNav"></nav>
+    <div class="side-foot">
+      <div class="who" id="adName">Administrator</div>
+      <div class="role">Platform Admin</div>
+      <button onclick="Admin.logout()">Sign out</button>
+    </div>
+  </aside>
+  <div class="main">
+    <header class="topbar"><h1 id="adTitle">Overview</h1></header>
+    <div class="content" id="adContent"></div>
+  </div>
+</div>
+
+<div id="toastRoot"></div>
+<script src="/js/admin.js"></script>
+</body>
+</html>
