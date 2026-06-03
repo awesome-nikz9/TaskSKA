@@ -1,0 +1,19 @@
+# One-click deploy on Render (https://render.com). Push this repo, then "New > Blueprint".
+services:
+  - type: web
+    name: taskska
+    env: node
+    plan: free
+    buildCommand: npm install
+    startCommand: node server.js
+    disk:
+      name: taskska-data
+      mountPath: /app/data
+      sizeGB: 1
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: JWT_SECRET
+        generateValue: true
+      - key: SEED_ON_EMPTY
+        value: "1"
